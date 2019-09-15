@@ -9,6 +9,7 @@ const Detail = (props) => {
    const [currency, setCurrency] = useState({});
    const [loading, setLoading] = useState(false);
    const [error, setError] = useState(null);
+   
    useEffect(() => {
     setLoading(true);
         ( async () => {
