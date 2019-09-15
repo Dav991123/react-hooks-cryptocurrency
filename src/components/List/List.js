@@ -6,8 +6,7 @@ import Pagination from './Pagination';
 
 const List = (props) => {
     const { history } = props;
-    console.log(props.match.params)
-    const [loading, setSloading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [currencies, setCurrencies] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
     const [page, setPage] = useState(
@@ -16,12 +15,12 @@ const List = (props) => {
     const [error, setError]= useState('');
     
     const fetchCurrencies = async () => {
-        setSloading(true)
+        setLoading(true)
         try {
             const response = await fetch(`${API_URL}/cryptocurrencies?page=${page}&perPage=20`);
             if(response.ok) {
                 const data = await response.json();
-                setSloading(false);
+                setLoading(false);
                 setCurrencies(data.currencies);
                 setTotalPages(data.totalPages)
                 
@@ -31,7 +30,7 @@ const List = (props) => {
             }
 
         }catch(error) {
-            setSloading(false);
+            setLoading(false);
             setError('Currency with given id not found.')
         }
     }
