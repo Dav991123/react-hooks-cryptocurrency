@@ -17,7 +17,7 @@ const Table = (props) => {
                 <tbody className="Table-body">
                     {
                         currencies.map(currency => (
-                            <tr>
+                            <tr key={currency.id}>
                                 <td>
                                     <span className="Table-rank">{currency.rank}</span>
                                     {currency.name}
