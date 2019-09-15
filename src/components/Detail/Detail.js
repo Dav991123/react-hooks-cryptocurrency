@@ -3,9 +3,9 @@ import { API_URL } from '../../config';
 import { renderChangePercent } from '../../helpers';
 import Loading from '../common/Loading';
 import './Detail.css';
-import { async } from 'q';
 const Detail = (props) => {
    const currencyId = props.match.params.id;
+   const pathName = props.location.pathname;
    const [currency, setCurrency] = useState({});
    const [loading, setLoading] = useState(false);
    const [error, setError] = useState(null);
@@ -29,7 +29,7 @@ const Detail = (props) => {
             }
 
         })()
-   },[])
+   },[pathName])
 
     if(loading) {
         return <div className="loading-container"><Loading /></div>
