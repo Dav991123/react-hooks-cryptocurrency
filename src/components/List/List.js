@@ -5,10 +5,14 @@ import Table from './Table';
 import Pagination from './Pagination';
 
 const List = (props) => {
+    const { history } = props;
+    console.log(props.match.params)
     const [loading, setSloading] = useState(false);
     const [currencies, setCurrencies] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(
+        props.match.params.id ? +props.match.params.id : 1
+    );
     const [error, setError]= useState('');
     
     const fetchCurrencies = async () => {
@@ -31,13 +35,16 @@ const List = (props) => {
             setError('Currency with given id not found.')
         }
     }
+    
     const handlePaginationClick = (direction) => {
         let nextPage = page;
         nextPage = direction === 'next' ? nextPage + 1 : nextPage - 1;
         setPage(nextPage);
     }
+
     useEffect(() => {
         fetchCurrencies();
+        history.push(`/page/${page}`)
     },[page]); //i love you hooks tanks react js ))
 
     if(loading) {

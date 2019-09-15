@@ -1,15 +1,22 @@
 import React from 'react';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import Header from './components/common/Header';
 import List from './components/List/List';
 import './App.css';
 
-function App() {
+const App = (props) => {
+  const {location} = props;
   return (
     <div className="App">
         <Header />
-        <List />
+        <Switch>
+            <Route 
+              path={location.pathname === '/' ? '/' : '/page/:id'} 
+              component={List}
+            />
+        </Switch>
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
