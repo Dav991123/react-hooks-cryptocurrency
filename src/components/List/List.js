@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from '../../config';
+import Loading from '../common/Loading';
 import Table from './Table';
 
 const List = (props) => {
@@ -30,7 +31,7 @@ const List = (props) => {
     },[]);
 
         if(loading) {
-            return <div>Loading ..</div>
+            return <div className="loading-container"><Loading /></div>
         }
         if(error) {
             return <div className="error">{error}</div>
