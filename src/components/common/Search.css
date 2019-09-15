@@ -30,6 +30,11 @@
       margin: auto
     }
 }
+.Search-loading {
+    position: absolute;
+    top: 9px;
+    right: 28px;
+}
 .Search-icon{
     background-image: url('./search.png');
     background-repeat: no-repeat;

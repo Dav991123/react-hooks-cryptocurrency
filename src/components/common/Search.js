@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { withRouter } from 'react-router-dom';
 import { API_URL } from '../../config';
+import Loading from '../common/Loading';
 import './Search.css';
 const Search = (props) => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -73,6 +74,17 @@ const Search = (props) => {
                     onChange={handleChange}
                     value={searchQuery}
                 />
+                {
+                    loading && searchQuery &&
+                    (
+                        <div className="Search-loading">
+                            <Loading 
+                                width="15px"
+                                height="15px"
+                            />
+                        </div>
+                    )
+                }
             </div>
             {renderSearchResults()}
         </div>
